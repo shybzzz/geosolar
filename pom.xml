@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>geo-solar</groupId>
-    <artifactId>spring-mvc</artifactId>
+    <groupId>geosolar</groupId>
+    <artifactId>geosolar</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>spring-mvc Maven Webapp</name>
+    <name>GeoSolar Maven Webapp</name>
     <url>http://maven.apache.org</url>
     <properties>
         <java-version>1.8</java-version>
@@ -13,35 +13,9 @@
         <catalina.home>/home/osboxes/apache-tomcat-7.0.70</catalina.home>
         <!--<catalina.home>/usr/local/tomcat</catalina.home>-->
         <catalina.home.webapps>${catalina.home}/webapps</catalina.home.webapps>
-        <war.name>spring-mvc</war.name>
+        <war.name>geosolar</war.name>
         <war.location>${catalina.home.webapps}/${war.name}</war.location>
     </properties>
-
-    <repositories>
-        <repository>
-            <id>sonatype-nexus</id>
-            <name>Kundera Public Repository</name>
-            <url>https://oss.sonatype.org/content/repositories/releases</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>kundera-missing</id>
-            <name>Kundera Public Missing Resources Repository</name>
-            <url>http://kundera.googlecode.com/svn/maven2/maven-missing-resources</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -59,36 +33,22 @@
             <version>${springframework.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>3.8.1</version>
-            <scope>test</scope>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>javax.servlet</groupId>-->
+            <!--<artifactId>javax.servlet-api</artifactId>-->
+            <!--<version>3.1.0</version>-->
+        <!--</dependency>-->
+
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>2.4.1</version>
         </dependency>
-        <dependency>
-            <groupId>com.impetus.kundera.client</groupId>
-            <artifactId>kundera-cassandra</artifactId>
-            <version>3.5</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>persistence-api</artifactId>
-            <version>1.0.2</version>
-        </dependency>
+
         <!--<dependency>-->
-            <!--<groupId>javax</groupId>-->
-            <!--<artifactId>javaee-api</artifactId>-->
-            <!--<version>6.0</version>-->
+            <!--<groupId>javax.persistence</groupId>-->
+            <!--<artifactId>persistence-api</artifactId>-->
+            <!--<version>1.0.2</version>-->
         <!--</dependency>-->
 
         <dependency>

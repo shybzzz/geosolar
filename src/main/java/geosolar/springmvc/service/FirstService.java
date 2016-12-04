@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.String.format;
 import static java.util.Arrays.asList;
 
 /**
@@ -22,34 +23,22 @@ public class FirstService {
         return asList(new User("Rostyk"), new User("Ira"), new User("Hebels"), new User("Oleg"));
     }
 
-    public String getKunderaUsers() {
-
-        /*Map<String, String> props = new HashMap<>();
-        props.put(CassandraConstants.CQL_VERSION, CassandraConstants.CQL_VERSION_3_0);
-        EntityManagerFactory managerFactory = Persistence.createEntityManagerFactory("emp", props);
-//        EntityManager em = managerFactory.createEntityManager();
-//
-////        em.persist(user);
-//        em.close();
-        managerFactory.close();
-*/
-        return "Something happened to Cassandra here and entity manager factory is created";
-    }
-
-    public ArrayList<String> getCassandraUsers() {
+    public List<User> getCassandraUsers() {
         Cluster cluster = Cluster.builder().withPort(9042).addContactPoints("127.0.0.1").build();
         Session session = cluster.connect("sampledb");
         String cqlStatement = "SELECT * FROM emp";
-        ArrayList<String> strings = new ArrayList<>();
+        ArrayList<User> users = new ArrayList<>();
 
         for (Row row : session.execute(cqlStatement)) {
-            strings.add(row.toString());
+            String name = row.getString(2);
+            String surname = row.getString(3);
+            users.add(new User(format("%1s %2s", name, surname)));
         }
 
         session.close();
         cluster.close();
 
-        return strings;
+        return users;
     }
 
 }

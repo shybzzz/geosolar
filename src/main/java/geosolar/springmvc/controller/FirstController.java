@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -48,15 +47,9 @@ public class FirstController {
         return this.firstService.getMyUsers();
     }
 
-    @RequestMapping("/kundera-users")
-    @ResponseBody
-    public String getKunderaUsers() {
-        return this.firstService.getKunderaUsers();
-    }
-
     @RequestMapping("/cassandra-users")
     @ResponseBody
-    public ArrayList<String> getCassandraUsers() {
+    public List<User> getCassandraUsers() {
         return this.firstService.getCassandraUsers();
     }
 
