@@ -1,59 +1,37 @@
 package geosolar.springmvc.service;
 
 import com.datastax.driver.core.Cluster;
-import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Session;
-import geosolar.springmvc.domain.User;
+import geosolar.springmvc.domain.Dst;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.lang.String.format;
-import static java.util.Arrays.asList;
-
-/**
- * Created by osboxes on 11/09/16.
- */
-
 @Service
 public class FirstService {
 
-    public List<User> getMyUsers() {
-        return asList(new User("Rostyk"), new User("Ira"), new User("Hebels"), new User("Oleg"));
-    }
-
-    public List<User> getCassandraUsers() {
+    public List<Dst> getDstByHour(int hour) {
         Cluster cluster = Cluster.builder().withPort(9042).addContactPoints("127.0.0.1").build();
-        Session session = cluster.connect("sampledb");
-        String cqlStatement = "SELECT * FROM emp";
-        ArrayList<User> users = new ArrayList<>();
+        Session session = cluster.connect("geosolar");
+        String cqlStatement = "SELECT * FROM dst";
+        ArrayList<Dst> dsts = new ArrayList<>();
 
         for (Row row : session.execute(cqlStatement)) {
-            String name = row.getString(2);
-            String surname = row.getString(3);
-            users.add(new User(format("%1s %2s", name, surname)));
+            dsts.add(new Dst(
+                    row.getInt("yy"),
+                    row.getInt("mo"),
+                    row.getInt("da"),
+                    row.getInt("hh"),
+                    row.getDouble("value")
+            ));
         }
 
         session.close();
         cluster.close();
 
-        return users;
+        return dsts;
     }
 
-    public String toFile() {
-
-        Cluster cluster = Cluster.builder().withPort(9042).addContactPoints("127.0.0.1").build();
-        Session session = cluster.connect("sampledb");
-
-        ResultSet resultSet = session.execute("COPY emp (first_name) TO 'zu.csv'");
-
-        session.close();
-        cluster.close();
-
-        return resultSet.toString();
-
-
-    }
 }
