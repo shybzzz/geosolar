@@ -53,4 +53,10 @@ public class FirstController {
         return this.firstService.getCassandraUsers();
     }
 
+    @RequestMapping("/to-file")
+    @ResponseBody
+    public String toFile() {
+        return this.firstService.toFile();
+    }
+
 }

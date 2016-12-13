@@ -1,6 +1,7 @@
 package geosolar.springmvc.service;
 
 import com.datastax.driver.core.Cluster;
+import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Session;
 import geosolar.springmvc.domain.User;
@@ -41,4 +42,18 @@ public class FirstService {
         return users;
     }
 
+    public String toFile() {
+
+        Cluster cluster = Cluster.builder().withPort(9042).addContactPoints("127.0.0.1").build();
+        Session session = cluster.connect("sampledb");
+
+        ResultSet resultSet = session.execute("COPY emp (first_name) TO 'zu.csv'");
+
+        session.close();
+        cluster.close();
+
+        return resultSet.toString();
+
+
+    }
 }
