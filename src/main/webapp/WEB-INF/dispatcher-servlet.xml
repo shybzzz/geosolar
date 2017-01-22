@@ -8,5 +8,7 @@
 
     <context:component-scan base-package="geosolar.springmvc.controller" />
     <context:component-scan base-package="geosolar.springmvc.service" />
+    <context:component-scan base-package="geosolar.cassandra" />
+    <context:component-scan base-package="geosolar.utils.springmvc" />
     <mvc:annotation-driven />
 </beans>

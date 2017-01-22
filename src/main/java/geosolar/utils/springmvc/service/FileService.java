@@ -1,0 +1,26 @@
+package geosolar.utils.springmvc.service;
+
+import org.springframework.stereotype.Component;
+import org.springframework.util.FileCopyUtils;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+@Component
+public class FileService {
+    public void responseFile(HttpServletResponse response, File file) throws IOException {
+        String fileName = file.getName();
+
+        response.setContentType("application/octet-stream");
+        response.setHeader(
+                "Content-Disposition",
+                "inline; filename=\"" + fileName + "\""
+        );
+        response.setContentLength((int) file.length());
+        InputStream inputStream = new FileInputStream(fileName);
+        FileCopyUtils.copy(inputStream, response.getOutputStream());
+    }
+}

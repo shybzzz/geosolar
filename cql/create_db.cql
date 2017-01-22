@@ -11,11 +11,11 @@ CREATE KEYSPACE IF NOT EXISTS geosolar
       PRIMARY KEY ((yy, mo, da, hh))
   );
 
---  CREATE TABLE IF NOT EXISTS geosolar.interplanetary_magnetic_field (
---        yy int,
---        mo int,
---        da int,
---        hh int,
---        value double,
---        PRIMARY KEY ((yy, mo, da, hh))
---    );
+  CREATE TABLE IF NOT EXISTS geosolar.interplanetary_magnetic_field_values (
+        YR int,
+        MO int,
+        DA int,
+        HHMM int,
+        Bz double,
+        PRIMARY KEY ((YR, MO, DA, HHMM))
+    );

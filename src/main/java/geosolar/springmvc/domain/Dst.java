@@ -1,5 +1,6 @@
 package geosolar.springmvc.domain;
 
+@SuppressWarnings("unused")
 public class Dst {
 
     private int year;
