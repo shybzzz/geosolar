@@ -1,6 +1,6 @@
-package geosolar.utils.springmvc.service;
+package geosolar.springmvc.service;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.util.FileCopyUtils;
 
 import javax.servlet.http.HttpServletResponse;
@@ -9,7 +9,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-@Component
+@Service
 public class FileService {
     public void responseFile(HttpServletResponse response, File file) throws IOException {
         String fileName = file.getName();

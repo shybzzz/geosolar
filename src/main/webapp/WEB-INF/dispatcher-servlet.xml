@@ -6,9 +6,10 @@
  http://www.springframework.org/schema/context
  http://www.springframework.org/schema/context/spring-context-4.0.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <context:component-scan base-package="geosolar.springmvc.controller" />
-    <context:component-scan base-package="geosolar.springmvc.service" />
+    <context:component-scan base-package="geosolar.domain" />
     <context:component-scan base-package="geosolar.cassandra" />
-    <context:component-scan base-package="geosolar.utils.springmvc" />
+    <context:component-scan base-package="geosolar.csv" />
+    <context:component-scan base-package="geosolar.mat" />
+    <context:component-scan base-package="geosolar.springmvc" />
     <mvc:annotation-driven />
 </beans>

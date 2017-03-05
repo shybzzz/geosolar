@@ -1,8 +1,8 @@
 package geosolar.springmvc.controller;
 
-import geosolar.springmvc.domain.InterplanetaryMagneticFieldValue;
+import geosolar.domain.InterplanetaryMagneticFieldValue;
 import geosolar.springmvc.service.InterplanetaryMagneticFieldValueService;
-import geosolar.utils.springmvc.service.FileService;
+import geosolar.springmvc.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

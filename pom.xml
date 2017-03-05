@@ -10,7 +10,8 @@
 
     <properties>
         <java-version>1.8</java-version>
-        <springframework.version>4.1.2.RELEASE</springframework.version>
+        <springframework.version>4.3.3.RELEASE</springframework.version>
+        <datastax.cassandra.version>3.0.0</datastax.cassandra.version>
         <catalina.home.webapps>${env.CATALINA_HOME}/webapps</catalina.home.webapps>
         <war.name>geosolar</war.name>
         <war.location>${catalina.home.webapps}/${war.name}</war.location>
@@ -32,17 +33,28 @@
             <artifactId>spring-webmvc</artifactId>
             <version>${springframework.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.4.1</version>
+            <version>2.8.1</version>
         </dependency>
 
         <dependency>
             <groupId>com.datastax.cassandra</groupId>
             <artifactId>cassandra-driver-core</artifactId>
-            <version>2.0.12.3</version>
+            <version>${datastax.cassandra.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.datastax.cassandra</groupId>
+            <artifactId>cassandra-driver-mapping</artifactId>
+            <version>${datastax.cassandra.version}</version>
         </dependency>
 
         <dependency>
@@ -55,6 +67,12 @@
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>3.9</version>
         </dependency>
 
     </dependencies>

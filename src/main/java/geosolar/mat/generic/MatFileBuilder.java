@@ -1,4 +1,4 @@
-package geosolar.utils.matlab;
+package geosolar.mat.generic;
 
 import com.jmatio.io.MatFileWriter;
 import com.jmatio.types.MLArray;
